@@ -16,7 +16,7 @@ const UserSchema = new Schema({
   },
   date: {
     type: Date,
-    default: date.now
+    default: Date.now
   },
   posts: [{
     type: Schema.Types.ObjectId,
@@ -24,4 +24,4 @@ const UserSchema = new Schema({
   }]
 });
 
-module.export = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('user', UserSchema);

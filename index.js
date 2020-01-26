@@ -1,15 +1,15 @@
-const cors = require('cors')
+const cors = require('cors');
 const express = require("express");
 const app = express();
 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const db = require('./config/keys').mongoURI;
-const User = require("./models/user");
-const Post = require('./models/post');
+const User = require("./server/models/user");
+const Post = require('./server/models/post');
 
 const expressGraphQL = require('express-graphql');
-const schema = require("./schema/schema");
+const schema = require("./server/schema/schema");
 
 // DB CONNECTION
 mongoose

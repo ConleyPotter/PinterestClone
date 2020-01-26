@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import PostIndex from './posts/PostIndex';
 
@@ -11,4 +11,3 @@ const App = () => (
 );
 
 export default App;
-

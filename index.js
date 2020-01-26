@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require("express");
 const app = express();
 
@@ -17,11 +18,16 @@ mongoose
   .catch(err => console.log(err));
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }));
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
 const port = process.env.PORT || 5000;
 

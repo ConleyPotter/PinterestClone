@@ -8,6 +8,7 @@ export const FETCH_POSTS = gql`
       title
       body
       date
+      imageUrl
       author {
         id
         name
@@ -26,6 +27,7 @@ export const FETCH_POST = gql`
       title
       body
       date
+      imageUrl
       author {
         id
         email

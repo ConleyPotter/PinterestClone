@@ -6,14 +6,17 @@ import { FETCH_POST } from '../../graphql/queries';
 
 const PostDetail = (props) => {
   const { propPost } = props;
-  const { id } = propPost;
+  const { id, imageUrl, title } = propPost;
+  const image = imageUrl ? (
+    <img className="post-image" src={imageUrl} alt={`${title}`} />
+  ) : null;
   return (
     <Query query={FETCH_POST} variables={{ id }}>
       {({ loading, error, data }) => {
         if (loading) return null;
         if (error) return error.message;
         const {
-          title, author, body, date,
+          author, body, date,
         } = data.post;
         const { authorUsername } = author.username;
         return (
@@ -26,6 +29,7 @@ const PostDetail = (props) => {
               </div>
               <div className="post-detail-body">
                 {body}
+                {image}
               </div>
             </div>
           </Link>

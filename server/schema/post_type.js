@@ -17,6 +17,7 @@ const PostType = new GraphQLObjectType({
     title: { type: GraphQLString },
     body: { type: GraphQLString },
     date: { type: GraphQLString },
+    imageUrl: { type: GraphQLString },
     author: {
       type: UserType,
       resolve(parentValue) {

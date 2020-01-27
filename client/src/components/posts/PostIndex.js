@@ -6,6 +6,8 @@ import PostDetail from './PostDetail';
 
 import { FETCH_POSTS } from '../../graphql/queries';
 
+import './post_index.scss';
+
 const PostIndex = () => (
   <Query query={FETCH_POSTS}>
     {({ loading, data, error }) => {
@@ -15,7 +17,7 @@ const PostIndex = () => (
       return (
         <ul className="post-index-container">
           {data.posts.map((post, i) => (
-            <PostDetail propPost={post} key={i} />
+            <PostDetail className="post-detail-container" propPost={post} key={i} />
           ))}
         </ul>
       );

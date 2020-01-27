@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import PostIndex from './posts/PostIndex';
 import PostDetail from './posts/PostDetail';
 
+import './app.scss';
+
 const App = () => (
   <div className="main-container">
     <h1>Pinterest Clone</h1>

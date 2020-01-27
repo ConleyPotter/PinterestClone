@@ -10,3 +10,22 @@
   -moz-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .37);
   box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .37);
 }
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-sizer,
+.grid-item {
+  width: 20%;
+}
+
+.grid-item {
+  height: 120px;
+  float: left;
+  background: $platinum;
+  border: 2px solid $black;
+  border-radius: 2px;
+}

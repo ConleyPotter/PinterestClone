@@ -4,6 +4,8 @@ import { PropTypes } from 'prop-types';
 import { Query } from 'react-apollo';
 import { FETCH_POST } from '../../graphql/queries';
 
+import './post_detail.scss';
+
 const PostDetail = (props) => {
   const { propPost } = props;
   const { id, imageUrl, title } = propPost;
@@ -20,17 +22,15 @@ const PostDetail = (props) => {
         } = data.post;
         const { authorUsername } = author.username;
         return (
-          <Link to={`/posts/${id}`}>
-            <div className="post-detail-container">
-              <div className="post-detail-header">
-                {title}
-                {authorUsername}
-                {date}
-              </div>
-              <div className="post-detail-body">
-                {body}
-                {image}
-              </div>
+          <Link to={`/posts/${id}`} className="post-detail-container grid-item">
+            <div className="post-detail-header">
+              {title}
+              {authorUsername}
+              {date}
+            </div>
+            <div className="post-detail-body">
+              {body}
+              {image}
             </div>
           </Link>
         );

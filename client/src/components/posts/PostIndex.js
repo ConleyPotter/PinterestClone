@@ -4,7 +4,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import * as Masonry from 'masonry-layout';
 import imagesLoaded from 'imagesloaded';
-import PostDetail from './PostDetail';
+import PostIndexDetail from './PostIndexDetail';
 
 import { FETCH_POSTS } from '../../graphql/queries';
 
@@ -20,7 +20,7 @@ const PostIndex = () => (
         <ul className="post-index-container grid" id="grid">
           <div className="grid-sizer" />
           {data.posts.map((post, i) => (
-            <PostDetail propPost={post} key={i} />
+            <PostIndexDetail propPost={post} key={i} />
           ))}
         </ul>
       );

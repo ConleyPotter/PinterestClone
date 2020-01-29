@@ -26,8 +26,9 @@
 .grid-item {
   float: left;
   background: $platinum;
-  border: 2px solid $black;
-  border-radius: 2px;
+  border: 1px solid $jet;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .grid-item--width2 { width:  40%; }

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import PostIndex from './posts/PostIndex';
-import PostDetail from './posts/PostDetail';
 
 import './app.scss';
 
@@ -12,7 +11,6 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={PostIndex} />
       <Route exact path="/posts" component={PostIndex} />
-      <Route exact path="posts/:postId" component={PostDetail} />
     </Switch>
   </div>
 );

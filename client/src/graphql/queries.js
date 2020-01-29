@@ -11,7 +11,6 @@ export const FETCH_POSTS = gql`
       imageUrl
       author {
         id
-        name
         email
         username
         date

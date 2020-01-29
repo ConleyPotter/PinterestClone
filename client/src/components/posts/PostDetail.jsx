@@ -18,19 +18,17 @@ const PostDetail = (props) => {
         if (loading) return null;
         if (error) return error.message;
         const {
-          author, body, date,
+          author, date,
         } = data.post;
+        // investigate why this isn't showing up
         const { authorUsername } = author.username;
         return (
           <Link to={`/posts/${id}`} className="post-detail-container grid-item">
-            <div className="post-detail-header">
+            {image}
+            <div className="info">
               {title}
               {authorUsername}
               {date}
-            </div>
-            <div className="post-detail-body">
-              {body}
-              {image}
             </div>
           </Link>
         );

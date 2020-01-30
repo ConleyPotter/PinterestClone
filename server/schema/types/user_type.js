@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 
 const {
-  GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList,
+  GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList, GraphQLBoolean,
 } = graphql;
 
 const mongoose = require('mongoose');
@@ -12,10 +12,11 @@ const UserType = new GraphQLObjectType({
   name: 'UserType',
   fields: () => ({
     id: { type: GraphQLID }, // Mongoose automatically generates an ID field for our models
-    name: { type: GraphQLString },
     email: { type: GraphQLString },
     username: { type: GraphQLString },
-    date: { type: GraphQLString},
+    date: { type: GraphQLString },
+    loggedIn: { type: GraphQLBoolean },
+    token: { type: GraphQLString },
     posts: {
       // eslint-disable-next-line global-require
       type: new GraphQLList(require('./post_type')),

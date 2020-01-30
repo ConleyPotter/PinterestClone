@@ -6,10 +6,10 @@ const {
 const mongoose = require('mongoose');
 
 const User = mongoose.model('user');
-const UserType = require('./user_type');
+const UserType = require('./types/user_type');
 
 const Post = mongoose.model('post');
-const PostType = require('./post_type');
+const PostType = require('./types/post_type');
 
 
 const RootQuery = new GraphQLObjectType({

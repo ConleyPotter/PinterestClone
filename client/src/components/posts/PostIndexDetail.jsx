@@ -18,13 +18,13 @@ class PostIndexDetail extends React.Component {
   updateHoverState(hover) {
     const { propPost } = this.props;
     const { date, author } = propPost;
-    const { username } = author;
+    // const { username } = author;
     this.setState({
       infoButton: (hover
         ? (
           <div className="info">
             <div>{date}</div>
-            <div>{username}</div>
+            {/* <div>{username}</div> */}
           </div>
         ) : null),
     });

@@ -14,6 +14,8 @@ const UserSchema = new Schema({
   password: {
     type: String,
     require: true,
+    min: 8,
+    max: 32,
   },
   date: {
     type: Date,
@@ -23,6 +25,10 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'post',
   }],
+  admin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('user', UserSchema);

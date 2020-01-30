@@ -16,7 +16,7 @@ const register = async (data) => {
       throw new Error(message);
     }
 
-    const { name, email, password } = data;
+    const { username, email, password } = data;
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -25,18 +25,12 @@ const register = async (data) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User(
-      {
-        name,
-        email,
-        password: hashedPassword,
-      },
-      (err) => {
-        if (err) throw err;
-      },
-    );
+    const user = new User({ username, email, password: hashedPassword });
 
-    user.save();
+    user.save((err) => {
+      // eslint-disable-next-line no-console
+      if (err) console.log(err);
+    });
     const token = jwt.sign({ id: user.id }, secretOrKey);
 
     return {
@@ -93,11 +87,13 @@ const verifyUser = async (data) => {
     const { id } = decoded;
     const user = await User.findById(id);
     const loggedIn = !!user;
+
+    const { username, admin } = user;
     return {
       loggedIn,
-      username: user.username,
-      id: user.id,
-      admin: user.admin,
+      username,
+      id,
+      admin,
     };
   } catch (err) {
     return { loggedIn: false };

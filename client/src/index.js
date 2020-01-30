@@ -3,35 +3,58 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HashRouter } from 'react-router-dom';
 import App from './components/App';
-
-// const cache = new InMemoryCache({
-//   dataIdFromObject: object => {
-//     switch (object.__typename) {
-//       case "User":
-//         return object.username;
-//       default:
-//         return defaultDataIdFromObject(object);
-//     }
-//   }
-// });
+import VERIFY_USER from './graphql/mutations';
 
 const cache = new InMemoryCache({
-  // eslint-disable-next-line no-underscore-dangle
-  dataIdFromObject: (object) => object._id || null,
+  dataIdFromObject: (object) => {
+    // eslint-disable-next-line no-underscore-dangle
+    switch (object.__typename) {
+      case 'User':
+        return object.username;
+      default:
+        return defaultDataIdFromObject(object);
+    }
+  },
+  data: {
+    isLoggedIn: !!(localStorage.getItem('auth-token')),
+  },
 });
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
   cache,
+  header: {
+    authorization: localStorage.getItem('auth-token'),
+  },
   onError: ({ networkError, graphQLErrors }) => {
     console.log('graphQLErrors', graphQLErrors);
     console.log('networkError', networkError);
   },
 });
+
+const token = localStorage.getItem('auth-token');
+
+cache.writeData({
+  data: {
+    isLoggedIn: false,
+  },
+});
+
+if (token) {
+  client
+    .mutate({ mutation: VERIFY_USER, variables: { token } })
+    .then(({ data }) => {
+      cache.writeData({
+        data: {
+          isLoggedIn: data.verifyUser.loggedIn
+        },
+      });
+    });
+}
 
 const Root = () => (
   <ApolloProvider client={client}>

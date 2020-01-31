@@ -7,7 +7,7 @@ import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import { HashRouter } from 'react-router-dom';
 import App from './components/App';
-import VERIFY_USER from './graphql/mutations';
+import { VERIFY_USER } from './graphql/mutations';
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object) => {
@@ -50,7 +50,7 @@ if (token) {
     .then(({ data }) => {
       cache.writeData({
         data: {
-          isLoggedIn: data.verifyUser.loggedIn
+          isLoggedIn: data.verifyUser.loggedIn,
         },
       });
     });

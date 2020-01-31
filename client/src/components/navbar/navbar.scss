@@ -1,0 +1,33 @@
+.navbar-content {
+  display: flex;
+  padding: 0 25px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.session-button {
+  border: none;
+  background-color: #ff6b6b;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  padding: 8px 15px;
+  margin: 0 5px;
+  outline: none;
+}
+
+.session-button:hover {
+  cursor: pointer;
+}
+
+.navbar-logo {
+  display: flex;
+  font-size: 22px;
+  align-items: center;
+}

@@ -1,26 +1,30 @@
-import { ApolloConsumer } from 'react-apollo';
 import React from 'react';
 
 // eslint-disable-next-line arrow-body-style
-const LogoutButton = () => {
+const LogoutButton = (client, history) => {
   return (
-    <ApolloConsumer>
-      {(client) => (
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.removeItem('auth-token');
-            client.writeData({
-              data: {
-                isLoggedIn: false,
-              },
-            });
-          }}
-        >
-          Logout
-        </button>
-      )}
-    </ApolloConsumer>
+    <button
+      type="button"
+      onClick={async (e) => {
+        e.preventDefault();
+        localStorage.removeItem('auth-token');
+        localStorage.removeItem('auth-token');
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUserId');
+        await client.clearStore();
+        client.writeData({
+          data: {
+            isLoggedIn: false,
+            currentUser: '',
+            currentUserId: '',
+          },
+        });
+        history.push('/');
+      }}
+      className="session-button"
+    >
+      Logout
+    </button>
   );
 };
 

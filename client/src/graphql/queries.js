@@ -1,6 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 import gql from 'graphql-tag';
 
+export const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+    currentUser @client
+    currentUserId @client
+    admin @client
+  }
+`;
+
 export const FETCH_POSTS = gql`
   query FetchPosts {
     posts {

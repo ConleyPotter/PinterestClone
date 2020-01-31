@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { REGISTER_USER } from '../../../graphql/mutations';
+import './session_forms.scss';
 
 class Register extends React.Component {
   static updateCache(client, { data }) {

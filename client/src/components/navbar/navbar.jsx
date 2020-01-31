@@ -7,8 +7,10 @@ import { IS_LOGGED_IN } from '../../graphql/queries';
 import SessionModal from '../modals/session_modal';
 import SearchBar from './search_bar';
 import LogoutButton from './logout_button';
-
 import './navbar.scss';
+
+const image = require('../../design/images/200px-Pinterest_Logo.svg.png');
+
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -33,7 +35,7 @@ class NavBar extends React.Component {
               <div className="navbar-left">
                 <Link to="/">
                   <div className="navbar-logo">
-                    <img src="" alt="logo" />
+                    <img src={image} alt="logo" />
                   </div>
                 </Link>
               </div>

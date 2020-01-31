@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { LOGIN_USER } from '../../../graphql/mutations';
+import './session_forms.scss';
 
 class LoginForm extends React.Component {
   static updateCache(client, { data }) {

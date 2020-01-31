@@ -15,7 +15,6 @@ export const FETCH_POSTS = gql`
     posts {
       id
       title
-      body
       date
       imageUrl
       author {
@@ -33,7 +32,6 @@ export const FETCH_POST = gql`
     post(id: $id) {
       id
       title
-      body
       date
       imageUrl
       author {

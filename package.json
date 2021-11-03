@@ -27,7 +27,7 @@
     "mongoose": "^5.8.9",
     "node-fetch": "^2.6.0",
     "unsplash-source": "^0.1.0",
-    "validator": "^12.2.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
